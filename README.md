@@ -1,2 +1,2 @@
 # SemLA
-Information Fusion 2023 | Semantics Lead All: Towards Unified Image Registration and Fusion from a Semantic Perspective.
+Thank you for your attention😀! The code is being organized, and the complete project will be released before July 1.
