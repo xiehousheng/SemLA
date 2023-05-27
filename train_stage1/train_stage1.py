@@ -51,16 +51,23 @@ def train_one_epoch(model_stage1, teacher, optimizer, data_loader_reg, data_load
 
 
 if __name__ == '__main__':
+    reg_vi_path = '/home/xhs/data/train2017'
+    reg_ir_path = '/home/xhs/data/ir2017/ie/ir/images'
+    
+    ivs_data0_path = '/home/xhs/data/people/img'
+    ivs_data1_path = '/home/xhs/data/irpeople/rgb2ir_paired_Road_edge_pretrained/test_latest/images'
+    ivs_label_path = '/home/xhs/data/people/mask'
+    
     # Device for training: 'cuda' or 'cpu'
     device = 'cuda'
 
     # dataset for training registration
-    Reg_data = RegDataset('/home/xhs/data/train2017', '/home/xhs/data/ir2017/ie/ir/images')
+    Reg_data = RegDataset(reg_vi_path, reg_ir_path)
 
     # dataset for training semantic awareness
-    Sa_data = IVSDataset('/home/xhs/data/people/img',
-                         '/home/xhs/data/irpeople/rgb2ir_paired_Road_edge_pretrained/test_latest/images',
-                         '/home/xhs/data/people/mask')
+    Sa_data = IVSDataset(ivs_data0_path,
+                         ivs_data1_path,
+                         ivs_label_path)
 
     Reg_sampler = torch.utils.data.RandomSampler(Reg_data)
     Sa_sampler = torch.utils.data.RandomSampler(Sa_data)
