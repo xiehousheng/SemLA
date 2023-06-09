@@ -122,6 +122,6 @@ if __name__ == '__main__':
         print('current epoch:', epoch)
         train_one_epoch(model_stage1, teacher, optimizer, data_loader_reg, data_loader_sa)
         scheduler.step()
-        torch.save(model_stage1.backbone.state_dict(), './weights/stage1_{}epoch.ckpt'.format(epoch))
+        torch.save(model_stage1.backbone.state_dict(), './weights/stage1_{}epoch.ckpt'.format(epoch+1))
 
 
