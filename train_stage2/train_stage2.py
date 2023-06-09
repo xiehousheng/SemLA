@@ -44,15 +44,21 @@ def train_ssr(model_stage2, optimizer, data_loader_sa, csc_weight_wossr, epoch):
 
 
 if __name__ == '__main__':
+    # Configuring dataset paths
+    path2IVS = ""
+    path2IVS_CPSTN = ""
+    path2IVS_Label = ""
+
+    # Configure the size of the training image
+    train_size = (320, 240)
+
     # Load the model weights obtained from the first stage of training
-    stage1_weight_path = "./weights/stage1_13epoch.ckpt"
+    stage1_weight_path = "./weights/stage1_14epoch.ckpt"
     
     # Device for training: 'cuda' or 'cpu'
     device = 'cuda'
 
-    dataset = Dataset('/home/xhs/data/people/img',
-                         '/home/xhs/data/irpeople/rgb2ir_paired_Road_edge_pretrained/test_latest/images',
-                         '/home/xhs/data/people/mask')
+    dataset = Dataset(path2IVS, path2IVS_CPSTN, path2IVS_Label, train_size_w = train_size[0], train_size_h = train_size[1])
 
     dataset_sampler = torch.utils.data.RandomSampler(dataset)
 
