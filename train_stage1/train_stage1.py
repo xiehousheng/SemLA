@@ -51,23 +51,27 @@ def train_one_epoch(model_stage1, teacher, optimizer, data_loader_reg, data_load
 
 
 if __name__ == '__main__':
-    reg_vi_path = '/home/xhs/data/train2017'
-    reg_ir_path = '/home/xhs/data/ir2017/ie/ir/images'
-    
-    ivs_data0_path = '/home/xhs/data/people/img'
-    ivs_data1_path = '/home/xhs/data/irpeople/rgb2ir_paired_Road_edge_pretrained/test_latest/images'
-    ivs_label_path = '/home/xhs/data/people/mask'
-    
+    # Configuring dataset paths
+    path2COCO = ""
+    path2COCO_CPSTN = ""
+    path2IVS = ""
+    path2IVS_CPSTN = ""
+    path2IVS_Label = ""
+
+    # Configure the size of the training image
+    train_size = (320, 240)
+
     # Device for training: 'cuda' or 'cpu'
     device = 'cuda'
 
     # dataset for training registration
-    Reg_data = RegDataset(reg_vi_path, reg_ir_path)
+    Reg_data = RegDataset(path2COCO, path2COCO_CPSTN, train_size_w = train_size[0], train_size_h = train_size[1])
 
     # dataset for training semantic awareness
-    Sa_data = IVSDataset(ivs_data0_path,
-                         ivs_data1_path,
-                         ivs_label_path)
+    Sa_data = IVSDataset(path2IVS,
+                         path2IVS_CPSTN,
+                         path2IVS_Label, train_size_w = train_size[0], train_size_h = train_size[1])
+
 
     Reg_sampler = torch.utils.data.RandomSampler(Reg_data)
     Sa_sampler = torch.utils.data.RandomSampler(Sa_data)
@@ -96,10 +100,14 @@ if __name__ == '__main__':
         if param.requires_grad:
             print(name)
 
+
+    # Knowledge distillation using MatchFormer
     use_registration_teacher = True
     if use_registration_teacher == True:
         teacher = Matchformer(config=default_cfg)
-        teacher.load_state_dict(torch.load("./weight/matchformer.ckpt"), strict=False)
+
+        # loading the weights of matchformer
+        teacher.load_state_dict(torch.load("./weight/MatchFormer.ckpt"), strict=False)
         teacher.eval().to(device)
 
     optimizer = torch.optim.Adam(model_stage1.parameters(), lr=3e-4)

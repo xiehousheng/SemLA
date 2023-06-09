@@ -127,7 +127,7 @@ def gasuss_noise(image, mean=0, var=0.001):
 
 
 class RegDataset(Dataset):
-    def __init__(self, data_path_vi, data_path_ir):
+    def __init__(self, data_path_vi, data_path_ir, train_size_w, train_size_h):
         super(RegDataset, self).__init__()
 
         self.trans = transforms.Compose([
@@ -140,9 +140,9 @@ class RegDataset(Dataset):
         #     data.append((os.path.join(data_path_vi, item)))
         self.data_path_vi = data_path_vi
         self.data_path_ir = data_path_ir
-        
-        self.train_size_w = int(320)
-        self.train_size_h = int(240)
+
+        self.train_size_w = int(train_size_w)
+        self.train_size_h = int(train_size_h)
         self.num_of_points = int((self.train_size_w / 8) * (self.train_size_h / 8))
 
         self.feat_size_w = self.train_size_w/8
