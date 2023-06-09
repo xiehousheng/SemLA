@@ -21,3 +21,17 @@ Download pre-trained models on [Google Drive](https://drive.google.com/drive/fol
 Configuring dataset paths and model weights, then run ```python test.py```
 ### On a pair of images
 Configuring images paths and model weights, then run ```python inference_one_pair_images.py```
+
+## Citation
+
+If this code is useful for your research, please cite our paper.
+```bibtex
+@article{xie2023semantics,
+  title={Semantics lead all: Towards unified image registration and fusion from a semantic perspective},
+  author={Xie, Housheng and Zhang, Yukuan and Qiu, Junhui and Zhai, Xiangshuai and Liu, Xuedong and Yang, Yang and Zhao, Shan and Luo, Yongfang and Zhong, Jianbo},
+  journal={Information Fusion},
+  pages={101835},
+  year={2023},
+  publisher={Elsevier}
+}
+```
