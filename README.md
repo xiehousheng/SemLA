@@ -1,6 +1,7 @@
 # SemLA
-Thank you for your attention😀! The code is being organized, and the complete project will be released before July 1.
-
+**H. Xie**, Y. Zhang, J. Qiu, X. Zhai, X. Liu, Y. Yang, S. Zhao, Y. Luo, and J. Zhong, “**Semantics lead all: Towards unified image registration and fusion from a semantic perspective,” Information Fusion**, p. 101835, 2023. [Paper](https://www.sciencedirect.com/science/article/abs/pii/S1566253523001513)
+![preview](assets\SemLA.png)
+![preview](assets\Visualization.png)
 ## Data preparation
 1. Download the [COCO](https://drive.google.com/drive/folders/1rN5o903LXiIq54IvgxGLJnfb_f1jtoMt?usp=share_link) dataset to ```.\datasets\COCO\``` (path2COCO)
 2. Download the [IVS](https://github.com/xiehousheng/IVS_data) dataset to ```.\datasets\IVS\``` (path2IVS)
