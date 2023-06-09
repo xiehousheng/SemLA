@@ -25,7 +25,7 @@ class SemLA_Fusion(nn.Module):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
 
-    def forward(self, x, mask):
+    def forward(self, x, mask, matchmode = 'semantic'):
         bs = x.shape[0]
 
         feat1 = self.fuse1(x)
@@ -37,7 +37,11 @@ class SemLA_Fusion(nn.Module):
 
         (vifeat, irfeat) = featfuse.split(int(bs / 2))
 
-        featfuse = irfeat * mask*0.7+vifeat * mask*0.6 + vifeat * (1-mask)
+        if matchmode == 'semantic':
+            featfuse = irfeat * mask * 0.7 + vifeat * mask * 0.6 + vifeat * (1 - mask)
+        elif matchmode == 'scene':
+            featfuse = irfeat * 0.6 + vifeat * 0.6
+
         featfuse = self.fuse5(featfuse)
         featfuse = self.acitve(featfuse)
         featfuse = (featfuse + 1) / 2

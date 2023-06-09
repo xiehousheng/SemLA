@@ -14,7 +14,7 @@ if __name__ == '__main__':
     img0_pth = ""
     img1_pth = ""
 
-    matchmode = 'semantic'
+    match_mode = 'semantic' # 'semantic' or 'scene'
 
     matcher = SemLA()
     # Loading the weights of the registration model
@@ -28,8 +28,8 @@ if __name__ == '__main__':
     img0_raw = cv2.imread(img0_pth)
     img0_raw = cv2.cvtColor(img0_raw, cv2.COLOR_BGR2RGB)
     img1_raw = cv2.imread(img1_pth, cv2.IMREAD_GRAYSCALE)
-    img0_raw = cv2.resize(img0_raw, (480, 360))  # input size shuold be divisible by 8
-    img1_raw = cv2.resize(img1_raw, (480, 360))
+    img0_raw = cv2.resize(img0_raw, (640, 480))  # input size shuold be divisible by 8
+    img1_raw = cv2.resize(img1_raw, (640, 480))
 
     img0 = torch.from_numpy(img0_raw)[None].cuda() / 255.
     img1 = torch.from_numpy(img1_raw)[None][None].cuda() / 255.
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     img0 = rearrange(img0, 'n h w c ->  n c h w')
     vi_Y, vi_Cb, vi_Cr = RGB2YCrCb(img0)
 
-    mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, matchmode=matchmode)
+    mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, matchmode=match_mode)
     mkpts0 = mkpts0.cpu().numpy()
     mkpts1 = mkpts1.cpu().numpy()
 
@@ -59,14 +59,13 @@ if __name__ == '__main__':
     sa_ir = torch.from_numpy(sa_ir)[None][None].cuda()
 
     img1_trans = torch.from_numpy(img1_raw_trans)[None][None].cuda() / 255.
-    fuse = matcher.fusion(torch.cat((vi_Y, img1_trans), dim=0), sa_ir).detach()
+    fuse = matcher.fusion(torch.cat((vi_Y, img1_trans), dim=0), sa_ir, matchmode=match_mode).detach()
 
     fuse = YCbCr2RGB(fuse, vi_Cb, vi_Cr)
     fuse = fuse.detach().cpu()[0]
     fuse = rearrange(fuse, ' c h w ->  h w c').detach().cpu().numpy()
 
     fig = make_matching_figure(fuse, img0_raw, img1_raw, mkpts0_tps, mkpts1_tps)
-
     plt.show()
 
 

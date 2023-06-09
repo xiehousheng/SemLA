@@ -15,6 +15,7 @@ if __name__ == '__main__':
     result_path = ""
     reg_weight_path = ""
     fusion_weight_path = ""
+    match_mode  = 'scene' # 'semantic' or 'scene'
 
     matcher = SemLA()
     # Loading the weights of the registration model
@@ -43,7 +44,7 @@ if __name__ == '__main__':
         img0 = rearrange(img0, 'n h w c ->  n c h w')
         vi_Y, vi_Cb, vi_Cr = RGB2YCrCb(img0)
 
-        mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, match_mode='scene')
+        mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, match_mode=match_mode)
         mkpts0 = mkpts0.cpu().numpy()
         mkpts1 = mkpts1.cpu().numpy()
 
@@ -65,7 +66,7 @@ if __name__ == '__main__':
         sa_ir = torch.from_numpy(sa_ir)[None][None].cuda()
 
         img1_trans = torch.from_numpy(img1_raw_trans)[None][None].cuda() / 255.
-        fuse = matcher.fusion(torch.cat((vi_Y, img1_trans), dim=0), sa_ir).detach()
+        fuse = matcher.fusion(torch.cat((vi_Y, img1_trans), dim=0), sa_ir, matchmode=match_mode).detach()
 
         fuse = YCbCr2RGB(fuse, vi_Cb, vi_Cr)
         fuse = fuse.detach().cpu()[0]
