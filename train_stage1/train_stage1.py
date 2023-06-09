@@ -57,6 +57,7 @@ if __name__ == '__main__':
     path2IVS = ""
     path2IVS_CPSTN = ""
     path2IVS_Label = ""
+    MatchFormer_weight_path = ""
 
     # Configure the size of the training image
     train_size = (320, 240)
@@ -107,7 +108,7 @@ if __name__ == '__main__':
         teacher = Matchformer(config=default_cfg)
 
         # loading the weights of matchformer
-        teacher.load_state_dict(torch.load("./weight/MatchFormer.ckpt"), strict=False)
+        teacher.load_state_dict(torch.load(MatchFormer_weight_path), strict=False)
         teacher.eval().to(device)
 
     optimizer = torch.optim.Adam(model_stage1.parameters(), lr=3e-4)
