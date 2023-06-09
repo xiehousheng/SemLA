@@ -16,7 +16,7 @@ Thank you for your attention😀! The code is being organized, and the complete 
 3. Train stage3: Training fusion module. ```cd train_stage3``` and configuring dataset paths, then run ```python train_stage3.py```
 
 ## Test
-Download pre-trained models on [Google Drive](https://drive.google.com/drive/folders/1rN5o903LXiIq54IvgxGLJnfb_f1jtoMt?usp=share_link) or [Baidu Yun](https://drive.google.com/drive/folders/1rN5o903LXiIq54IvgxGLJnfb_f1jtoMt?usp=share_link)
+Download pre-trained models on [Google Drive](https://drive.google.com/drive/folders/1Lh9UFXWP5bvt_MVwYa9ZPA7g_lOEGrxz?usp=drive_link) or [Baidu Yun](https://pan.baidu.com/s/1CBG0k0PJMqHQsHybdMkRow?pwd=5fmn)
 ### On a dataset
 Configuring dataset paths and model weights, then run ```python test.py```
 ### On a pair of images
