@@ -10,8 +10,11 @@ Thank you for your attention😀! The code is being organized, and the complete 
 
 ## Training
 1. Train stage1: Registration and semantic feature extraction.  
-```cd train_stage1``` and Configuring dataset paths, then ```python train_stage1.py``
+
+```cd train_stage1``` and configuring dataset paths, then ```python train_stage1.py```
 2. Train stage2: Training CSC and SSR modules.
-```cd train_stage2``` and Configuring dataset paths, then ```python train_stage2.py``
+
+```cd train_stage2``` and Configuring dataset paths, then ```python train_stage2.py```
 3. Train stage1: Training fusion module.
-```cd train_stage3``` and Configuring dataset paths, then ```python train_stage3.py``
+
+```cd train_stage3``` and Configuring dataset paths, then ```python train_stage3.py```
