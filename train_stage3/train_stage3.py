@@ -24,11 +24,14 @@ if __name__ == '__main__':
     path2COCO = ""
     path2COCO_CPSTN = ""
 
+    # Configure the size of the training image
+    train_size = (320, 240)
+
     # Device for training: 'cuda' or 'cpu'
     device = 'cuda'
 
     # COCO Dataset
-    dataset = Dataset(path2COCO, path2COCO_CPSTN)
+    dataset = Dataset(path2COCO, path2COCO_CPSTN, train_size_w = train_size[0], train_size_h = train_size[1])
 
     dataset_sampler = torch.utils.data.RandomSampler(dataset)
 

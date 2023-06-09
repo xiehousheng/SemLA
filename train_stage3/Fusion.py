@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 class SemLA_Fusion(nn.Module):
     """
-    The registration section of SemLA
+    The fusion section of SemLA
     """
     def __init__(self):
         super().__init__()

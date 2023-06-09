@@ -79,7 +79,7 @@ def enhance(img0, img1, IMAGE_SHAPE):
 
 
 class Dataset(Dataset):
-    def __init__(self, img_path, trans_path):
+    def __init__(self, img_path, trans_path, train_size_w, train_size_h):
         super(Dataset, self).__init__()
         self.img_path = img_path
         self.trans_path = trans_path
@@ -90,8 +90,8 @@ class Dataset(Dataset):
         data_floder = os.listdir(self.img_path)
         self.data_floder = data_floder
 
-        self.train_size_w = int(320)
-        self.train_size_h = int(240)
+        self.train_size_w = int(train_size_w)
+        self.train_size_h = int(train_size_h)
 
         self.feat_size_w = int(self.train_size_w / 8)
         self.feat_size_h = int(self.train_size_h / 8)
