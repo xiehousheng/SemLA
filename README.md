@@ -12,6 +12,10 @@
 3. Download the label of [IVS](https://github.com/xiehousheng/IVS_data) dataset to ```.\datasets\IVS_Label\``` (path2IVS_Label)
 4. Generate pseudo-infrared images for each image in the COCO dataset using [CPSTN](https://github.com/wdhudiekou/UMF-CMGR/tree/main/CPSTN) and store the results in ```.\datasets\COCO_CPSTN\``` (path2COCO_CPSTN)
 5. Generate pseudo-infrared images for each image in the IVS dataset using [CPSTN](https://github.com/wdhudiekou/UMF-CMGR/tree/main/CPSTN) and store the results in ```.\datasets\IVS_CPSTN\``` ((path2IVS_CPSTN))
+6. 
+## Installation
+
+The code is implemented in `python=3.6`, as well as `pytorch=1.9` and `opencv-python=4.6.0.66`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch dependencies. Installing PyTorch with CUDA support is strongly recommended.
 
 ## Training
 1. Train stage1: Registration and semantic feature extraction. ```cd train_stage1``` and configuring dataset paths, then run ```python train_stage1.py```
