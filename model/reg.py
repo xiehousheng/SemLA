@@ -60,12 +60,12 @@ class SemLA_Reg(nn.Module):
 
         # Flatten
         feat_sa_ir_flatten = rearrange(feat_sa_ir, 'n c h w -> n c (h w)')
-        feat_reg_vi_flatten = rearrange(feat_reg_vi, 'n c h w -> n (h w) c')
+        feat_reg_vi_flatten_ = rearrange(feat_reg_vi, 'n c h w -> n (h w) c')
         feat_reg_ir_flatten = rearrange(feat_reg_ir, 'n c h w -> n (h w) c')
 
         # Feature Similarity Calculation
         feat_reg_vi_flatten, feat_reg_ir_flatten = map(lambda feat: feat / feat.shape[-1] ** .5,
-                                                       [feat_reg_vi_flatten, feat_reg_ir_flatten])
+                                                       [feat_reg_vi_flatten_, feat_reg_ir_flatten])
         attention = torch.einsum("nlc,nsc->nls", feat_reg_vi_flatten,
                                  feat_reg_ir_flatten) / 0.1
         attention = attention.softmax(dim=1)
@@ -75,7 +75,7 @@ class SemLA_Reg(nn.Module):
         attention = torch.sum(attention, dim=2)
 
         # Calibration of semantic features of visible images
-        feat_reg_vi_ca = self.csc0(feat_reg_vi_flatten, attention * 1.5)
+        feat_reg_vi_ca = self.csc0(feat_reg_vi_flatten_, attention * 1.5)
         feat_reg_vi_ca = self.csc1(feat_reg_vi_ca, attention * 1.5)
         feat_reg_vi_ca = rearrange(feat_reg_vi_ca, 'n (h w) c -> n c h w', h=h, w=w)
 
