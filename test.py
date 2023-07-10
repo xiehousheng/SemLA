@@ -27,7 +27,7 @@ if __name__ == '__main__':
     matcher = matcher.eval().cuda()
 
     image_path = os.listdir(vi_path)
-
+    # vi_path is the visible dataset path, ir_path is the infrared dataset path
     for image_name in image_path:
         img0_pth = os.path.join(vi_path, image_name)
         img1_pth = os.path.join(ir_path, image_name)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
         mkpts0 = mkpts0.cpu().numpy()
         mkpts1 = mkpts1.cpu().numpy()
 
-        _, prediction = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC, 3)
+        _, prediction = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC, 5)
         prediction = np.array(prediction, dtype=bool).reshape([-1])
         mkpts0_tps = mkpts0[prediction]
         mkpts1_tps = mkpts1[prediction]
