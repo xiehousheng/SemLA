@@ -34,7 +34,7 @@ class SemLA(nn.Module):
 
         conf = torch.einsum("nlc,nsc->nls", feat_reg_vi,
                             feat_reg_ir) / 0.1
-        mask = conf > 0.1
+        mask = conf > 0.
         mask = mask \
                * (conf == conf.max(dim=2, keepdim=True)[0]) \
                * (conf == conf.max(dim=1, keepdim=True)[0])
