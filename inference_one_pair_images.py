@@ -11,7 +11,9 @@ if __name__ == '__main__':
     # config
     reg_weight_path = ""
     fusion_weight_path = ""
-    img0_pth = ""
+
+    # img0 is visible image, and img1 is infrared image
+    img0_pth = "" 
     img1_pth = ""
 
     match_mode = 'semantic' # 'semantic' or 'scene'
@@ -41,7 +43,7 @@ if __name__ == '__main__':
     mkpts0 = mkpts0.cpu().numpy()
     mkpts1 = mkpts1.cpu().numpy()
 
-    _, prediction = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC,3)
+    _, prediction = cv2.findHomography(mkpts0, mkpts1, cv2.RANSAC,5)
     prediction = np.array(prediction, dtype=bool).reshape([-1])
     mkpts0_tps = mkpts0[prediction]
     mkpts1_tps = mkpts1[prediction]
