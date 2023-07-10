@@ -5,6 +5,8 @@
   <img src="assets\SemLA.png" width="100%" />
   <img src="assets\Visualization.png" width="100%" />
 </p>
+## Note
+We have updated the existing bugs in the original code. Please download the current project and weights again for testing and training.【07/10】
 
 ## Data preparation
 1. Download the [COCO](https://drive.google.com/drive/folders/1rN5o903LXiIq54IvgxGLJnfb_f1jtoMt?usp=share_link) dataset to ```.\datasets\COCO\``` (path2COCO)
@@ -25,7 +27,7 @@ The code is implemented in `python=3.6`, as well as `pytorch=1.9` and `opencv-py
 3. Train stage3: Training fusion module. ```cd train_stage3``` and configuring dataset paths, then run ```python train_stage3.py```
 
 ## Test
-Download pre-trained models on [Google Drive](https://drive.google.com/drive/folders/1Lh9UFXWP5bvt_MVwYa9ZPA7g_lOEGrxz?usp=drive_link) or [Baidu Yun](https://pan.baidu.com/s/1CBG0k0PJMqHQsHybdMkRow?pwd=5fmn) and configure the path ```reg_weight_path```, ```fusion_weight_path```. We provide two matching modes, one is semantic object-oriented matching, setting ```matchmode = "semantic"```, and the other is global image oriented matching, setting ```matchmode = "scene"```.
+Download pre-trained models on [Google Drive](https://drive.google.com/drive/folders/1Lh9UFXWP5bvt_MVwYa9ZPA7g_lOEGrxz?usp=sharing) or [Baidu Yun](https://pan.baidu.com/s/1x3v4BlWgwEH31p5lwL42Ew?pwd=qriy) and configure the path ```reg_weight_path```, ```fusion_weight_path```. We provide two matching modes, one is semantic object-oriented matching, setting ```matchmode = "semantic"```, and the other is global image oriented matching, setting ```matchmode = "scene"```.
 ### On a dataset
 Configuring dataset paths, then run ```python test.py```
 ### On a pair of images
