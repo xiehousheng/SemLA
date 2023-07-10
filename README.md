@@ -5,6 +5,7 @@
   <img src="assets\SemLA.png" width="100%" />
   <img src="assets\Visualization.png" width="100%" />
 </p>
+
 ## Note
 We have updated the existing bugs in the original code. Please download the current project and weights again for testing and training.【07/10】
 
@@ -14,7 +15,7 @@ We have updated the existing bugs in the original code. Please download the curr
 3. Download the label of [IVS](https://github.com/xiehousheng/IVS_data) dataset to ```.\datasets\IVS_Label\``` (path2IVS_Label)
 4. Generate pseudo-infrared images for each image in the COCO dataset using [CPSTN](https://github.com/wdhudiekou/UMF-CMGR/tree/main/CPSTN) and store the results in ```.\datasets\COCO_CPSTN\``` (path2COCO_CPSTN)
 5. Generate pseudo-infrared images for each image in the IVS dataset using [CPSTN](https://github.com/wdhudiekou/UMF-CMGR/tree/main/CPSTN) and store the results in ```.\datasets\IVS_CPSTN\``` ((path2IVS_CPSTN))
-6. 
+
 ## Installation
 
 The code is implemented in `python=3.6`, as well as `pytorch=1.9` and `opencv-python=4.6.0.66`. Please follow the instructions [here](https://pytorch.org/get-started/locally/) to install both PyTorch dependencies. Installing PyTorch with CUDA support is strongly recommended.
