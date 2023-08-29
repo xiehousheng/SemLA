@@ -44,7 +44,7 @@ if __name__ == '__main__':
         img0 = rearrange(img0, 'n h w c ->  n c h w')
         vi_Y, vi_Cb, vi_Cr = RGB2YCrCb(img0)
 
-        mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, match_mode=match_mode)
+        mkpts0, mkpts1, feat_sa_vi, feat_sa_ir, sa_ir = matcher(vi_Y, img1, matchmode=match_mode)
         mkpts0 = mkpts0.cpu().numpy()
         mkpts1 = mkpts1.cpu().numpy()
 
