@@ -10,7 +10,7 @@
 We have updated the existing bugs in the original code. Please download the current project and weights again for testing and training.【07/10】
 
 ## Data preparation
-1. Download the [COCO](https://drive.google.com/drive/folders/1rN5o903LXiIq54IvgxGLJnfb_f1jtoMt?usp=share_link) dataset to ```.\datasets\COCO\``` (path2COCO)
+1. Download the [COCO](https://cocodataset.org/#download) dataset to ```.\datasets\COCO\``` (path2COCO)
 2. Download the [IVS](https://github.com/xiehousheng/IVS_data) dataset to ```.\datasets\IVS\``` (path2IVS)
 3. Download the label of [IVS](https://github.com/xiehousheng/IVS_data) dataset to ```.\datasets\IVS_Label\``` (path2IVS_Label)
 4. Generate pseudo-infrared images for each image in the COCO dataset using [CPSTN](https://github.com/wdhudiekou/UMF-CMGR/tree/main/CPSTN) and store the results in ```.\datasets\COCO_CPSTN\``` (path2COCO_CPSTN)
